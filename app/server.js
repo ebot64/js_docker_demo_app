@@ -30,6 +30,7 @@ let mongoUrlDocker = "mongodb://admin:password@mongodb";
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 // "user-account" in demo with docker. "my-db" in demo with docker-compose
+// "just an extra line added to create version 1.1 for AWS ECR"
 let databaseName = "my-db";
 
 app.post('/update-profile', function (req, res) {
@@ -46,6 +47,7 @@ app.post('/update-profile', function (req, res) {
 
     db.collection("users").updateOne(myquery, newvalues, {upsert: true}, function(err, res) {
       if (err) throw err;
+      console.log("1 document updated");
       client.close();
     });
 
